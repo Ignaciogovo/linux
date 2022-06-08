@@ -1,0 +1,61 @@
+Arranque y parada del demonio cron:
+/etc/init.d/cron start
+/etc/init.d/cron stop
+
+
+Comprobar estado de cron:
+systemctl status cron
+
+
+
+
+Hacer un archivo ejecutable por cron: chmod +x archivo.sh
+
+
+
+Crontab de usuario: crontab -e
+
+
+
+Crontab de sistema: nano /etc/crontab
+
+
+listado de crontab existentes: crontab -l
+crontab -u usuario -l
+
+Estructura:
+Minutos(0-59) horas(0,23) dia(1,31) mes(1-12) diaSemana(0-6) usuario tarea
+
+
+* --> significa cada minuto, hora, , dia o etc ..
+Dias : sun, mon, tue, wed, thu, fri, sat
+
+Cadena especial:
+@reboot --> se ejecuta en el reinicio
+@yearly y @annually --> se ejecuta una vez al año --> 0 0 1 1 *
+@monthly --> Una vez al mes --> 0 0 1 * *
+@weekly --> una vez a la semana --> 0 0 * * 0
+@daily y @midnight
+@hourly --> Cada hora -->  0 * * * *
+
+
+
+
+Ejemplos:
+
+* * * * * /scripts/job.sh -->Se ejecuta cada minuto.
+*/5 * * * * /scripts/job.sh --> Cada 5 minutos
+
+0 6,18 * * * /scripts/job.sh --> Se ejecuta a las 6 a. M. y a las 6 p. M.
+
+0 19 * * mon /scripts/job.sh --> Se ejecuta a las 7 de la tarde todos los lunes.
+
+Eliminar entrada de cron:
+crontab -i -r
+
+
+
+Genererador de cron: https://www.generateit.net/cron-job/
+
+
+

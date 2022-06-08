@@ -1,0 +1,61 @@
+-git init
+-git config --global user.name "usuario prueba"
+-git config --global user.email usuariofalso@hotmail.com
+-git config --list
+crear un archivo
+touch prueba.txt
+git add prueba.txt
+git status
+git commit -m "a ver si estudiamos mas"
+git log -> Para ver las versiones
+gitk  -> Para ver las versiones de manera grafica
+	gitk --all te lo muestra mas detallado
+git commit -am "Version 1"        -> Con -am te ahorras el paso de git add prueba.txt Pero solo cuando cuando ya se ha añadido
+
+git branch desarrollo -> Crear otra rama
+git checkout desarrollo -> Cambiar de rama
+git checkout -b desarrollo2 -> Te crea y te cambia a esa rama
+git merge nombre_rama -> Para mezclar ramas
+
+
+Reset -> Descartas cambios de la rama
+ 	Opciones:
+		--soft: Mantiene los archivos actuales y el índice
+		--hard: Actualiza los archivos y el índice.
+		--mixed: Actualiza el índice pero no los archivos (Predeterminado)
+	Descartar las 3 ultimas confirmaciones -> git reset HEAD~3
+	Devolver una rama al estado anterior -> git reset --hard HEAD@{1}
+	Localizar una revisión e iniciar una rama ahí -> git reflog
+
+
+git rebase [Rama a donde se quiere trasladar]---> Traslada una rama como si hubiera iniciado desde una revisión diferente.
+
+
+
+Remoto
+
+git remote
+git remote -v
+git remote add <nombre> <url> --> Crea una conexión en remoto
+git remote rm <nombre> -->Borrar repositorio remoto
+git remote rename <nombre-antiguo> <nombre-nuevo>
+
+git fetch --> Descargar de un repositorio remoto
+git push --> Subir a un repositorio remoto
+git pull --> Descarga de un repositorio remoto y actualiza al instante el repositorio local
+	|---> Es como git fetch y git merge seguido    ----> --allow-unrelated-histories
+
+
+
+Forzar un pull
+	git fetch --all
+ 	git reset --hard origin/master
+	Esto forzaria el push borrando todos los cambios locales
+Forzar un push
+	git push -f origin master
+
+
+https://github.com/Pollitodetroya/cursoPHP.git
+
+
+

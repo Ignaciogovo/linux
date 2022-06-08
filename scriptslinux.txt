@@ -1,0 +1,175 @@
+#!/bin/bash
+
+echo -> imprime por pantalla
+	echo "Hola mundo"
+date ->da la fecha									
+read -> Lee una variable
+	read NOMBRE APELLIDO   (cada ves que encuentra un espacio es una variable nueva)        
+		read -p "cual es tu nombre?" NOMBRE
+		|-> permite poner un texto antes de leer la variable
+		read -p "con el comando -n y luego un numero se deja de coger datos de la variable segun el nuemero de caracteres que hayas dicho" -n 4 nombre
+
+
+%
+										****cosas utiles***
+let -> Operando							sleep-> hace esperar mas (sleep 1 -> tiempo de espera 1)
+								in-sigue una serie de numero (sirve solo para el for y case) -> (in 1 2 3 4 5 6 ...)
+								$RANDOM -> Pone un numero aleatorio -> $(($RANDOM%10))-> hasta 10
+								# con almoadilla es un comentario ( se ignora en la ejecucion)	
+NUMEROS ENTEROS							Si se quiere terminar un bucle antes de tiempo -> break
+	-gt >							Si se quiere saltar hacia delante un momento en el bucle -> continue
+	-lt <
+	-le <=
+	-ge >=
+	-eq ==
+	-ne !=
+
+expr -> Operando resultado'expr $1*$2' ---> Sirve para operar con parametros.
+parametros   --> Son los datos dados al ejecutar e bash ( como una funcion)   Ejemplo: bash ejemplo.sh 1 2 a 4
+	Los parametros son desde $1-$9
+	$# nº total de parámetros
+	$* todos los parametros en una cadena de texto.
+	$@ array con todos los parametros
+COD. TEXTO
+	>
+	<
+	=
+	!=
+	-z cadena vacia
+	-n cadena no vacia
+
+(IF)
+
+	|If [ condicion1 ] 	->if [ $numero1 -eq $numero2 ]									para poner dos condiciones --> Ejemplo: if[[$num1 -eq $num2 & $num3 -lt $num4]]     (Se necesita dos corchetes)
+	|then																				&& --> 	Y      || --> 0
+	|	comando1
+	|	comando2
+	|elif[ condicion2 ]
+	|then
+	|	comando1
+	|	comando2
+	|else
+	|	comanod1
+	|fi
+
+
+(CASE)
+	|case__ in										|case__ in
+	|1)												|[a-z,A-Z]) 	//Contempla si es una letra
+	|	echo___;;									|	echo___;;
+	|2)												|[1-9]|10) 		// numeros entre el 1 y el 10
+	|	echo___;;									|	echo___;;
+	|3)												|*)
+	|	echo___;;									|	echo___;;
+	|4)												|esac
+	|	echo___;;
+	|*)
+	|	echo___;;
+	|esac
+
+(for)	|for i in 1 2 3 4 5 6 7 8 ... ----     --> for i in {1..10}
+					  | hay estas dos opciones	
+	|for ((i=0;i<20;i++))	      ----	
+
+
+	|do
+	|	comando 1 	
+	| 	comando 2
+	|done
+								
+
+(while)
+	|while [ condicion ]
+	|do
+	|      comando 1
+	|      comando 2
+	|done
+
+ARRAYS
+	Formas de declarar un array
+		- distros[0]='ubuntu'
+		- declare -a distros=('Ubuntu' 'Linux Mint')
+		- distros=('Ubuntu 'Linux Mint')
+		- distros=(Ubuntu Linux\ Mint)
+
+	Acceder al contenido de los arrays
+		- ${distros[i]}   --> Mostrar un elemento en concreto.
+		- ${distros[@]}   --> Mostrar todos los elementos.
+		- ${distros[@]:1:2} --> Muestra los elementos 1 y 2 a la vez
+	
+	Cuantos elementos tiene un array
+		- echo ${#distros[@]} --> Muestra el numero de elementos que tiene un array
+
+
+	Añadir elementos a un array
+		- distros=(Arch "${distros[@]}") ---> Añadir un elemento al principio
+		- distros=("${distros[@]}" Arch ) ---> Añadir un elemento al final
+		- distros=("${distros[@]:0:2}" Arch "${distros[@]:3}") --> Añadir un elemento en el medio
+
+	Quitar elementos de un array
+		-distros=(${distros[@]/Ubuntu/})
+		- unset distros[1]
+	Una variable dentro de un array
+		variable=0
+		array=( 1 2 4 5 6 )
+		echo = ${array[variable]} --> Se escogeria la posicion 0 que es el valor de la variable
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+primera opcion
+let a=b+c
+
+
+Segunda opcion
+suma2=`expr $num1 + num2`
+para multiplicar -> multi2=`expr $num1 \* $num2`
+
+
+
+
+tercera opcion
+suma3=$(echo "scale=3;7+2.5" |bc)
+
+
+
+
+
+
+
+
+
+
+
+
+COSAS DE FICHEROS
+
+
+-Escribir dentro de un fichero a partir de un script
+echo $texto > $fichero   --> Se sobreescribe
+echo $texto >> $fichero
+
+
+
+
+

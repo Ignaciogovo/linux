@@ -1,0 +1,59 @@
+Linux
+	Monitorización 
+
+
+	-uptime -> presenta la hora del sistema y el tiempo que lleva el sistema en marcha.
+			-presenta tambien el valor medio de la carga
+
+
+
+	-time ->Permite conocer la disribución del tiempo de ejecución del código de un programa
+		 Ejemplo time ls -> te dice cuanto tarda en ejecutar el codigo ls
+
+		real- desde que se ejecuta hasta que se finaliza
+		user -la cantidad de tiempo de CPU gastado en modo usuario
+		sys - la cantidad de tiempo que gasta en el nucleo 
+
+
+	-top -> La informacion se actualiza cada 5 segundos,
+		Primeras lineas
+		-Uptime
+		-processes: numero de procesos que se estan actualizando
+			-Running
+			-Sleeping
+			-Stopped
+			-Zombie
+		
+		-CPU: Utilizacion media del procesador
+		-Memory
+		-Swap
+
+
+		signifcado de cada campo-
+		-PID -+
+
+
+
+
+
+
+
+
+
+	-ps -Procesos activos lanzados por el usuario
+
+	-vmstat - informa del uso de la memoria de la actividad de intercambio entre memoria y disco,transferencias interrupciones cambios de contexto y uso del procesador.
+
+
+
+
+
+
+
+
+
+
+
+
+Puertos:
+	sudo netstat -plnut  --> Enumera los puertos disponibles
