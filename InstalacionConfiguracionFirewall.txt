@@ -1,0 +1,68 @@
+Instalar:
+	sudo apt update
+	sudo apt install ufw
+
+
+Verificar estado
+	sudo ufw status verbose
+	
+Politicas predeterminadas (Bloquear todo tráfico entrante y permitir todo el tráfico saliente)
+	/etc/default/ufw --> se puede modificar con la ruta
+	sudo ufw default <policy> <chain> --> para modificar el archivo
+
+Perfiles de aplicacion (Describe el servicio y contiene las reglas de firewall para el servicio)
+	/etc/ufw/apllications.d
+
+	sudo ufw app list --> enumera los perfiles de aplicaciones disponibles en su servidor
+	sudo ufw app info nombre_app --> para encontrar más info del servicio
+	
+Habilitando UFW
+
+	Si se esta conectado por SSH: 
+		sudo ufw allow ssh --> Permite conexiones con ssh entrantes
+						Si no estuviera conectado al puerto estandar:
+							sudo ufw allow puerto/tcp
+
+	sudo ufw enable --> Habilita firewall
+	sudo ufw disable --> Deshabilita firewall
+	sudo ufw reset --> Restablece y desabilita firewall
+
+
+Habilitar puerto:
+	ufw allow port_number/protocol
+
+
+Habilitar conexiones http
+	sudo ufw allow http 
+		Si se ha cambiado el puerto:
+			sudo ufw allow puerto/tcp
+
+
+Habilitar desde el perfil de la aplicacion
+	sudo ufw allow 'aplicacion'
+
+
+
+Habilitar Rangos de puertos:
+	sudo ufw allow 7100:7200/protocolo   (tcp o udp)
+
+Habilitar Dirección Ip y número de puertos específicos
+	sudo ufw allow from IP to any port puerto
+		Ejemplo: sudo ufw allow from 102.168.1.16 to any port 3306
+	Rango de puertos:
+		sudo ufw allow from 192.168.1.0/24 any port puerto
+
+
+
+
+Eliminar reglas
+	sudo  ufw status numbered --> Muestra las reglas
+	sudo ufw delete numero_regla --> (Numero regla viene en la lista de reglas)
+
+	sudo ufw delete allow puerto
+
+
+
+
+
+Configuracion de firewall --> zentica-global.com/es/zentica-blog/ver/como-configurar-un-firewall-con-ufw-en-ubuntu-20.04-60739015798d4
