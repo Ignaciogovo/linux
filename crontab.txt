@@ -18,6 +18,9 @@ Crontab de usuario: crontab -e
 
 
 Crontab de sistema: nano /etc/crontab
+realizar crontad del sistema: 
+*/5 * * * * nombre_usuario /scripts/job.sh --> Cada 5 minutos
+
 
 
 listado de crontab existentes: crontab -l
