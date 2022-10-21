@@ -1,0 +1,42 @@
+PACMAN:
+
+
+
+Buscar nuevas versiones de la base de datos de paquetes:
+	sudo pacman -Syy
+
+Actualizar la base de datos de paquetes:
+	sudo pacman -Syu
+
+Instalar un programa:
+	sudo pacman -S nombre-del-programa
+
+Borrar un programa:
+	sudo pacman -R nombre-del-programa
+
+Borrar un programa borrando tambien todas las dependencias del programa
+	sudo pacman -Rsu nombre-del-programa
+
+Borrar un programa junto los archivos de respaldos del programa
+	sudo pacman -Rsun nombre-del-programa
+
+Actualizar e instalar un nombre del programa
+	sudo pacman -Syu nombre-del-programa
+
+Actualizar un paquete:
+	pacman -S paquete
+
+
+Ver todos los paquetes y programas instalados:
+	pacman -Q
+
+Limpiar el sistema: (Caché y archivos basura)
+	sudo pacman -Scc
+
+
+
+Reinstalar todos los paquetes: (En lugar de formatear e instalar)
+	pacman -Qnq | pacman -S -
+
+
+

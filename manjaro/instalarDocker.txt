@@ -1,0 +1,22 @@
+Actualizar sistema	
+	sudo pacman -Syu
+instalar docker
+	sudo pacman -S docker
+
+Iniciar el servicio docker
+	sudo systemctl start docker.service
+
+Habilitar el servicio Docker
+	sudo systemctl enable docker.service
+
+Verificar la version de docker
+	sudo docker version
+Verificar información de docker
+sudo docker info
+
+Ejecutar Docker sin root
+	sudo usermod -aG docker $USER
+
+
+
+https://codepre.com/como-instalar-docker-en-manjaro-linux.html
