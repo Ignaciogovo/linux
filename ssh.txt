@@ -1,0 +1,22 @@
+Instalar cliente:
+	sudo apt install openssh-client
+Instalar servidor:
+	sudo apt install ssh
+
+
+generar claves:
+ssh-keygen
+
+copiar clave:
+ssh-copy-id
+
+
+
+Denegar acceso con password
+nano /etc/ssh/sshd_config
+PasswordAuthentication no
+
+
+
+Acceder con clave privada distinta a la indicada en la ruta predeterminada:
+ssh -i ~/.shh/mykey user@host

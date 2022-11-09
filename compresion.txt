@@ -1,0 +1,104 @@
+1-7z
+2-zip
+3-tar
+4-gzip
+5-bzip2
+
+
+
+
+Conocer archivo: file nombre_archivo
+
+
+1-7z --> Sirve para casi todos
+sudo apt install p7zip
+sudo apt install p7zip-full
+# Para descomprimir archivos rar: --> sudo apt install p7zip-rar --> es un paquete no-libre
+
+soporta: 7z, ZIP, GZip, Bzip2 o TAR, entre los más conocidos
+
+
+
+Comprimir:
+7z a paquete-comprimido archivo-a-comprimir
+
+varios archivos en un mismo fichero 7z
+7z a paquete-comprimido archivo-1 archivo-2
+
+Comprimir con contraseña:
+7z a -p paquete-comprimido archivo-a-comprimir
+
+Comprimir con formatos: 7z, zip, gzip, bzip2 o tar
+7z a -tgzip paquete-comprimido archivo-a-comprimir
+
+
+
+
+
+
+Listar:
+listar contenido de la carpeta comprimido
+7z l paquete-comprimido
+
+
+
+
+
+
+Descomprimir:
+7z e paquete-comprimido
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2-zip:
+
+Comprimir:
+zip archivo.zip archivo-comprimir
+
+Descomprimir: 
+
+unzip archivo.zip
+
+Indicar directorio:
+unzip archivo.zip -d directorio
+
+
+
+zip and unzip: https://www.hostgator.mx/blog/principales-caracteristicas-de-unzip-linux/
+
+
+3-tar:
+
+Compresion tar.gz
+	tar -czvf archivo.tar.gz directorio/archivo
+Para descomprimir:
+	tar -xzvf archivo.tar.gz
+Para ver el contenido
+	tar -tzf archivo.tar.gz
+
+
+4-gzip:
+	gzip nombre_archivo
+
+	descomprimir
+	gzip -d nombre_archivo.gz
+
+
+5-bzip2:
+	gzip nombre_archivo
+
+	Descomprimir
+	gzip -d nombre_archivo.bz2

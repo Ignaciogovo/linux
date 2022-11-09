@@ -1,0 +1,10 @@
+
+En el caso que se indique de esta forma:
+	0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+
+1º --> sudo apt-get update
+2º --> sudo apt-get dist-upgrade
+
+
+instalar un paquete especifico o varios:
+sudo apt-get install --only-upgrade paquete1 paquete2

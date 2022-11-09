@@ -1,0 +1,15 @@
+df -l --> Muestra el tamaño de los discos
+du carpeta --> muestra el tamaño de una carpeta
+du -sH carpeta --> muestra el tamaño de una carpeta y su contenido
+
+du -bsh * --> muestra el tamaño de la carpeta de forma más "humana"
+
+
+
+
+
+
+Creacion de enlace simbolico:
+
+ln -s /ruta/del/directorio-archivo /nombre/enlace-simbolico
+

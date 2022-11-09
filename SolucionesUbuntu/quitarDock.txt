@@ -1,0 +1,6 @@
+deshacerte definitivamente de Ubuntu-Dock, solo tienes que hacer:
+	sudo apt remove gnome-shell-extension-ubuntu-dock
+
+
+Instalar de nuevo el dock:
+sudo apt install gnome-shell-extension-ubuntu-dock

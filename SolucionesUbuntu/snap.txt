@@ -1,0 +1,6 @@
+sudo snap refresh aplicacion
+
+sudo snap refresh
+
+
+sudo snap refresh --list

@@ -1,0 +1,3 @@
+sudo apt purge -y nvidia-*
+sudo ubuntu-drivers install
+https://askubuntu-com.translate.goog/questions/1436601/ubuntu-drivers-unboundlocalerror-local-variable-version-referenced-before-as?_x_tr_sl=en&_x_tr_tl=es&_x_tr_hl=es&_x_tr_pto=sc
