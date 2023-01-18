@@ -1,0 +1,47 @@
+sudo apt-get install nmap
+
+
+-- Escanear red:
+sudo nmap 192.168.1.0/24
+
+-- Escluir hosts:
+nmap 192.168.1.0/24 --exclude 192.168.1.1,192.168.1.100
+
+
+-- Escanear sin puertos: 
+sudo nmap -sn 192.168.1.0/24
+
+-- Escanar mediante ping: 
+nmap -sP 192.168.1.0/24
+
+
+
+
+
+
+-- escanear host de la red: ( Muestra puertos)
+nmap 192.168.1.340
+
+-- Escanear puertos con información extendida
+namp -v 192.168.1.340
+
+-- Escanear un único puerto:
+nmap -p 80 192.168.1.340
+
+-- Buscar puertos TCP abiertos
+nmap -sT 192.168.1.340
+
+-- Buscar puertos UDP abiertos
+nmap -sU 192.168.1.340
+
+-- Escaneo de protocolos de un host (Ademas de TCP,UDP: ICMP, IGMP ....)
+nmap -sO 192.168.1.340
+
+-- Escanear un rango de puertos:
+nmap -p 80-200 192.168.340
+
+-- Escanear un rango de puertos y unos puertos especificos(Tanto TCP como UDP):
+nmap -p U:53,161,8888,T:1000-2000,80,25,8888,8080 192.168.1.340
+
+-- Detección de versión de sistema operativo
+nmap -v -O --osscan-guess localhost

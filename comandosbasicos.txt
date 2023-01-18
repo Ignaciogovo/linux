@@ -1,0 +1,258 @@
+#Busquedas con find, grep y awk
+
+# tail y head
+
+
+
+1 gestión ficheros:
+
+--cat -> visualiza el contenido de pequeños archivos
+--more -> Llena de texto la pantalla y se espera a que el usuario pulse <espacio>
+--less -> Permite moverse hacia delante y hacia atrás dentro del fichero con las teclas “AvPag” “RePag”
+
+
+
+
+	head --> 10 primeras líneas del fichero
+		head -n 4 últimas líneas
+	tail --> 10 últimas líneas del fichero
+		tail -n 4 últimas líneas
+
+
+
+
+
+2 grep
+	grep '<texto-buscado>' <archivo/archivos>
+
+	-n Número de línea
+		grep hola prueba.txt -n --> Muestra el número de línea
+	-c Total lineas
+		grep hola prueba.txt -c --> Muestra el número total de líneas
+	
+	-v Inverso
+		grep hola prueba.txt -v --> Muestra las líneas que no coinciden
+
+	-i Ignorar mayusculas o minusculas:
+		grep hola prueba.txt -i
+
+	-l Mostrar el archivo si contiene esa palabra:
+		grep hola prueba.txt -l
+
+	-w Asegurar coincidencia
+		grep hola prueba.txt -w   --> no contaría ddaholaasdlf
+
+	-o Imprimir solo el patrón pedido
+		grep hola prueba.txt -o  --> imprime solo hola
+
+	-A y -B   Imprimir las lineas de arriba y abajo
+		grep hola prueba.txt -A 1 -B 3 --> imprime la linea de arriba y 3 de abajo
+
+	--R Busqueda recursiva en todo el directorio
+		grep hola . -R
+
+
+	2.1 Expresiones regulares para patrones
+
+		^ -- Inicio de línea
+			grep ^h prueba.txt
+
+		$ -- Final de línea
+			grep h$ prueba.txt
+		
+
+
+
+
+
+3 awk
+	$0 --> Mostrar la línea completa
+	$1-$N --> Mostrar los campos de las línea especificados
+	FS--> (Espacio o TAB por defecto)
+	NF--> Número de campos en la línea actual
+	NR -->Número de líneas (records) en el stream/fichero a procesar
+	OFS --> Output field separador ("")
+	ORS --> Output record separator ("/n")
+	RS --> input record separator ("/n")
+	BEGIN --> define sentencias a ejecutar antes de empezar el procesado
+	END --> Define sentencias a ejecutar tras acabar el procesado
+	length --> longitud de la línea en proceso
+	FILENAME --> Nombre de del fichero en procesamiento
+	ARGC --> Número de parámetros de entrada al programa.
+	ARGV --> Valor de los parámetros pasados al programa
+
+
+	3.1 Expresiones regulares:
+		/cadena/ --> busqueda de cadena
+		/^cadena/ --> busqueda de cadena al principio de la línea
+		/cadena$/ --> FInal de la linea
+		$N ~ /cadena/ --> Búsqueda de la cadena en el campo N
+		$N !~ /cadena/ --> Búsqueda de cadena no en el campo N
+		/(cadena1)|(cadena2)/ → Búsqueda de cadena1 OR cadena2
+		/cadena1/,/cadena2>/ → Todas las líneas entre cadena1 y cadena2
+
+
+	3.2 Ejemplos:
+		cat prueba.txt | awk 'NR==numero_linea' Muestra la linea por su número
+		awk '/hola/' prueba.txt | awk '{print $2}' --> Muestra la segunda palabra de la línea con hola
+		awk '/hola/' prueba.txt | awk 'NF{print $NF}' Muestra la última palabra
+
+		Eliminar líneas duplicadas aunque sean no consecutivas:lines.
+			awk '!temp_array[$0]++' fichero
+
+
+
+4 wc
+   wc -l <fichero> número de líneas 
+   wc -c <fichero> número de bytes
+   wc -m <fichero> imprime el número de caracteres
+   wc -L <fichero> imprime la longitud de la línea más larga
+   wc -w <fichero> imprime el número de palabras
+
+
+
+5 find 
+ 5.1 filtrar por tamaño
+   find -size, -empty
+      ---> parametros:
+      c = bytes
+      w = 2 byte words
+      k = kilobytes
+      b = 512-byte bloques
+ 
+      -- Encontrar un archivo que este entre 500b y 1000b
+      find . -size +500b -and -size -1000b
+ 
+  5.2 Filtrar por ejecutable, legible
+ 
+	find . -readable -executable - writeable
+    --> no ejecutable
+      ! -executable
+ 
+ 
+ 
+  5.3 filtrar por tipo:
+      d - directorio o carpeta
+      f - archivo normal
+      l - enlace simbolico
+      c - dispositivos de caracteres
+      b - dispostivos de bloque
+      Ejemplo:
+      find / -type d
+ 
+  5.4 Filtrar por usuario propietario
+ 
+      por usuario
+     -user nombre_usuario
+      por grupo
+      -group nombre_grupo
+
+6  Comando xargs
+-- Sirve para utilizar el output de un comando usando anteriormente
+	Ejemplo:
+	find . -name .hidden | xargs cat 
+
+
+6.2 encontrar un archivo que contenga una palabra: 
+	find . -type f | xargs grep "leaving"
+
+
+
+
+
+
+7 Modificaciones:
+	7.1 sed
+
+		echo "texto cualquiera" | sed 's/texto_a_buscar/texto_a_reemplazar/'
+		cat prueba.txt | sed 's/^ *//'
+
+		sed -i 's/texto_a_buscar/texto_a_reemplazar/g' fichero_a_reemplazar -- Sobreescribir contenido de un fichero de texto sin generar otro nuevo
+
+    	cat prueba.txt | sed -e 'y/ao/AO/' --> reemplazar todas las a por A y todas las o por O
+    	cat prueba.txt | sed -i 's/^que .*$/el contenido de la línea ha sido reemplazado/'
+		 -----> La parte ^que hace referencia a todas las líneas que empiezan por la cadena de caracteres que.
+							El punto . hace referencia a cualquier letra que aparezca las veces que aparezca * hasta el final de la línea$
+
+		Mayuscula: U&
+			cat prueba.txt | sed -i 's/[a-z]/\U&/g'
+		Minuscula: L&
+			cat prueba.txt | sed -i 's/[A-Z]/\L&/g'
+
+		Añadir un guión y un espacio en el inicio de la línea:
+			cat prueba.txt | sed  's/^/- /'
+		Añadirlo en en las lineas 2,3,4:
+			cat prueba.txt | sed  '2,4 s/^/- /'
+			
+		Añadir al final de la linea
+			sed -i 's/$/. cierro la cita/' sedexamples
+			
+		Añadir una línea en blanco después de un patron:
+			sed -i '/palabra_o_patron_a_buscar/G' nombre_fichero		
+
+
+
+
+	7.2 tr
+		quitar espacios cat bandit.txt  | tr -d '[[:space:]]'
+	
+		tr ' ' '\n' --> Convierte los espacios en saltos de linea -- pero no sirve para cambiar palabras como sed
+
+
+
+
+	7.3 sort
+		-b ignora los espacios en balco precedentes
+		-d Ordnea ignorando todos los caracteres salvo las letras, números y espacios
+		-f considera iguales las mayúsculas y minúsculas
+		-n Ordena por valor númerico
+		-r Invertir el orden
+		-k n1, n2 Especifica un campo como clave de ordenación, comienza por n1 y acaba en n2
+		-o salita.txt --> Escriba el resultado en un txt
+	
+	 
+		--> Ordena alfabeticamente un output de un archivo
+		Ordenar por valor númerico:
+			--> sort -n archivo.txt
+		Ordenar por valor númerico de mayor a menor(Inverso):
+			--> sort -nr archivo.txt
+		
+
+	7.4 cut
+		-c Ejemplo: cut -c 4 archivo.txt ---> Muestra el cuarto carácter de cada una de las líneas
+			Ejemplo: cut -c 1,2 archivo.txt ---> Mostrar los caracteres uno y dos de todas las líneas
+
+		--complement: Invertimos el resultado de salida
+			Ejemplo: cut --complement -c -4 archivo.txt
+
+		-z : Indica el final del fichero, muestra solamente una linea
+			EJemplo: cut -z -c 1-13 archivo.txt
+			
+		
+		---> Mostrar los ultimos 2 caracteres:
+				cat archivo.txt | rev | cut -c 1,2 | rev 
+
+		---> Mostrar del 1 al 6:
+			cut -c 2-6 archivo.txt
+
+		---> Desde el 5 hasta el final:
+			cut -c 5- archivo.txt
+
+		---> Desde el inicio hasta el cuarto:
+			cut -c -4 archivo.txt
+			
+		
+comodines:
+
+	cat docu[1-6]
+	cat docu*
+	cat docu?
+
+
+
+
+
+
+
+
+
