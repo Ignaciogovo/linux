@@ -10,6 +10,8 @@ ssh-keygen
 copiar clave:
 ssh-copy-id
 
+	-- Copiar clave distinta:
+	ssh-copy-id -i /ruta/clave.pub 
 
 
 Denegar acceso con password

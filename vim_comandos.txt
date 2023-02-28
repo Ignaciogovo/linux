@@ -1,0 +1,29 @@
+Modo insert:
+	tecla i
+
+Salir modo insert:
+	tecla esc
+
+salir de vim:
+	:q
+
+salir y guardar:
+	:wq o :x
+
+moverse a partir de no flechas en modo lectura:
+l: derecha
+h: izquierda
+k: subir una linea
+j: bajar linea
+
+
+
+
+Poner las lineas del documento:
+	:set nu
+	:set number
+
+ir al principio de la linea:
+	tecla 0
+Ir al final de la linea:
+	tecla $

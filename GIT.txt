@@ -55,7 +55,17 @@ Forzar un push
 	git push -f origin master
 
 
-https://github.com/Pollitodetroya/cursoPHP.git
+#Control de versiones Ejemplo distintas ramas
+	# Desde la rama principal
+	git branch version-0.5 # Creamos una nueva rama
+	# Accedemos a la nueva rama:
+	git checkout version-0.5 # Cualquier cambio que hagamos en esta rama no modificará la principal
 
+	# Creamos una nueva rama que sea copia de la version-0.5
+	git branch version-1.0
 
+	# Despues de hacer cambios, nos vamos a la rama principal:
+	git checkout master
 
+	# fusionamos los cambios de la rama version-1.0 en master
+	git merge version-1.0
