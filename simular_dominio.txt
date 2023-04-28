@@ -1,0 +1,7 @@
+editamos el archivo: /etc/hosts
+
+Ejemplo: ip --> 172.17.0.2 dominio: cont_docker_1
+
+172.17.0.2 cont_docker_1
+
+url: https://www.adaweb.es/configurar-dominio-local-ubuntu/

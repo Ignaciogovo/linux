@@ -1,0 +1,19 @@
+-- Instalar openvpn
+	sudo apt install openvpn
+-- Establecer conexión:
+	sudo openvpn --config ruta_fichero_configuración
+
+-- Segundo plano:
+	sudo openvpn --config ruta_fichero_configuración &
+
+-- Desconectar
+	Cntrl + c
+
+-- Desconectar segundo plano
+	jobs
+	fg número_job
+	cntrl +c
+
+-- Otra alternativa:
+	sudo killall openvpn
+

@@ -57,3 +57,16 @@ Linux
 
 Puertos:
 	sudo netstat -plnut  --> Enumera los puertos disponibles
+
+
+
+
+obtener ip pública:
+	sudo apt install curl
+
+	curl ifconfig.me
+
+	otras opciones:
+		curl ifconfig.co
+		curl icanhazip.com
+		
